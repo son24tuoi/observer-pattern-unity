@@ -8,6 +8,8 @@ public class SamplePublisher : MonoBehaviour
 
     [SerializeField] private Color color = Color.blue;
 
+    [SerializeField] private SampleEventData sampleEventData;
+
     #endregion Fields
 
     // -------------------------------------------------------------------------------------------------
@@ -30,14 +32,31 @@ public class SamplePublisher : MonoBehaviour
 
     public void TriggerWithoutData()
     {
-        EventManager.Instance.Trigger(EventID.Template);
+        EventManager.Instance.Trigger(
+            EventID.Template
+        );
+    }
+
+    public void TriggerWithoutData1()
+    {
+        EventManager.Instance.Trigger(
+            EventID.Template1
+        );
     }
 
     public void TriggerWithData()
     {
-        EventManager.Instance.Trigger(new EventData(
+        EventManager.Instance.Trigger(new EventData<Color>(
             EventID.Template,
-            new object[1] { color }
+            color
+        ));
+    }
+
+    public void TriggerWithSpecialData()
+    {
+        EventManager.Instance.Trigger(new EventData<SampleEventData>(
+            EventID.Template,
+            sampleEventData
         ));
     }
 
@@ -68,10 +87,20 @@ public class SamplePublisher : MonoBehaviour
             {
                 target.TriggerWithoutData();
             }
+            
+            if (GUILayout.Button(nameof(target.TriggerWithoutData1)))
+            {
+                target.TriggerWithoutData1();
+            }
 
             if (GUILayout.Button(nameof(target.TriggerWithData)))
             {
                 target.TriggerWithData();
+            }
+
+            if (GUILayout.Button(nameof(target.TriggerWithSpecialData)))
+            {
+                target.TriggerWithSpecialData();
             }
         }
     }

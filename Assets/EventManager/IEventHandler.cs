@@ -5,11 +5,11 @@ using UnityEngine;
 // Không có dữ liệu
 public interface IEventHandler
 {
-    public void EventHandler();
+    public void EventHandler(EventID eventID);
 }
 
 // Có dữ liệu
 public interface IEventHandlerWithData
 {
-    public void EventHandler(EventData eventData);
+    public void EventHandler<T>(EventData<T> eventData);
 }

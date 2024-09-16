@@ -139,13 +139,13 @@ public class EventManager : MonoBehaviour
             int length = eventHandlerList.Count;
             for (int i = 0; i < length; i++)
             {
-                eventHandlerList[i].EventHandler();
+                eventHandlerList[i].EventHandler(eventID);
             }
         }
     }
 
     // Kích hoạt sự kiện có dữ liệu
-    public void Trigger(EventData eventData)
+    public void Trigger<T>(EventData<T> eventData)
     {
         if (eventsWithData.ContainsKey(eventData.eventID))
         {
@@ -166,9 +166,9 @@ public class EventManager : MonoBehaviour
     [ContextMenu("Amount Event Without Data")]
     public void AmountEventWithoutData()
     {
-        string log = $"Số lượng phần tử trong Dictionary Event Without Data: {eventsWithData.Count}\n";
+        string log = $"Số lượng phần tử trong Dictionary Event Without Data: {eventsWithoutData.Count}\n";
 
-        foreach (var kvp in eventsWithData)
+        foreach (var kvp in eventsWithoutData)
         {
             log += $"Key: {kvp.Key}, Số lượng phần tử trong List: {kvp.Value.Count}\n";
         }
@@ -179,9 +179,9 @@ public class EventManager : MonoBehaviour
     [ContextMenu("Amount Event With Data")]
     public void AmountEventWithData()
     {
-        string log = $"Số lượng phần tử trong Dictionary Event With Data: {eventsWithoutData.Count}\n";
+        string log = $"Số lượng phần tử trong Dictionary Event With Data: {eventsWithData.Count}\n";
 
-        foreach (var kvp in eventsWithoutData)
+        foreach (var kvp in eventsWithData)
         {
             log += $"Key: {kvp.Key}, Số lượng phần tử trong List: {kvp.Value.Count}\n";
         }
