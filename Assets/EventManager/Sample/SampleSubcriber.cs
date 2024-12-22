@@ -78,7 +78,7 @@ public class SampleSubcriber : MonoBehaviour, IEventHandler, IEventHandlerWithDa
                 break;
 
             default:
-                Debug.Log("Unknow EventID");
+                Debug.Log("Unknown EventID");
                 break;
         }
     }
