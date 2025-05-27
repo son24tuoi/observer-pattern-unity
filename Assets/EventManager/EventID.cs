@@ -1,5 +1,8 @@
-public enum EventID
+namespace One.Pattern.Observer
 {
-    Template = 0,
-    Template1 = 1
+    public enum EventID
+    {
+        Template = 0,
+        Template1 = 1
+    }
 }

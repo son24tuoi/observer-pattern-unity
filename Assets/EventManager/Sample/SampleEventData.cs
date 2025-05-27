@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class SampleEventData
+namespace One.Pattern.Observer.Sample
 {
-    public Color color;
+    [Serializable]
+    public class SampleEventData
+    {
+        public Color color;
+    }
 }

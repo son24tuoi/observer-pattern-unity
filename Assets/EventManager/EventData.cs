@@ -2,25 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventData<T>
+namespace One.Pattern.Observer
 {
-    public EventID eventID;
-
-    public T data;
-
-    public EventData(EventID eventID, T data)
+    public class EventData<T>
     {
-        this.eventID = eventID;
-        this.data = data;
+        public EventID eventID;
+
+        public T data;
+
+        public EventData(EventID eventID, T data)
+        {
+            this.eventID = eventID;
+            this.data = data;
+        }
     }
-}
 
-public class EventData
-{
-    public EventID eventID;
-
-    public EventData(EventID eventID)
+    public class EventData
     {
-        this.eventID = eventID;
+        public EventID eventID;
+
+        public EventData(EventID eventID)
+        {
+            this.eventID = eventID;
+        }
     }
 }

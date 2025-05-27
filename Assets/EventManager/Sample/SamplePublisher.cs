@@ -2,111 +2,114 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SamplePublisher : MonoBehaviour
+namespace One.Pattern.Observer.Sample
 {
-    #region Fields
-
-    [SerializeField] private Color color = Color.blue;
-
-    [SerializeField] private SampleEventData sampleEventData;
-
-    #endregion Fields
-
-    // -------------------------------------------------------------------------------------------------
-
-    #region Properties
-
-
-
-    #endregion Properties
-
-    // -------------------------------------------------------------------------------------------------
-
-    #region Unity Lifecycle Methods
-
-
-
-    #endregion Unity Lifecycle Methods
-
-    // -------------------------------------------------------------------------------------------------
-
-    public void TriggerWithoutData()
+    public class SamplePublisher : MonoBehaviour
     {
-        EventManager.Instance.Trigger(
-            EventID.Template
-        );
-    }
+        #region Fields
 
-    public void TriggerWithoutData1()
-    {
-        EventManager.Instance.Trigger(
-            EventID.Template1
-        );
-    }
+        [SerializeField] private Color color = Color.blue;
 
-    public void TriggerWithData()
-    {
-        EventManager.Instance.Trigger(new EventData<Color>(
-            EventID.Template,
-            color
-        ));
-    }
+        [SerializeField] private SampleEventData sampleEventData;
 
-    public void TriggerWithSpecialData()
-    {
-        EventManager.Instance.Trigger(new EventData<SampleEventData>(
-            EventID.Template,
-            sampleEventData
-        ));
-    }
+        #endregion Fields
 
-    // -------------------------------------------------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------
+
+        #region Properties
+
+
+
+        #endregion Properties
+
+        // -------------------------------------------------------------------------------------------------
+
+        #region Unity Lifecycle Methods
+
+
+
+        #endregion Unity Lifecycle Methods
+
+        // -------------------------------------------------------------------------------------------------
+
+        public void TriggerWithoutData()
+        {
+            EventManager.Instance.Trigger(
+                EventID.Template
+            );
+        }
+
+        public void TriggerWithoutData1()
+        {
+            EventManager.Instance.Trigger(
+                EventID.Template1
+            );
+        }
+
+        public void TriggerWithData()
+        {
+            EventManager.Instance.Trigger(new EventData<Color>(
+                EventID.Template,
+                color
+            ));
+        }
+
+        public void TriggerWithSpecialData()
+        {
+            EventManager.Instance.Trigger(new EventData<SampleEventData>(
+                EventID.Template,
+                sampleEventData
+            ));
+        }
+
+        // -------------------------------------------------------------------------------------------------
 
 #if UNITY_EDITOR
 
-    [UnityEditor.CustomEditor(typeof(SamplePublisher))]
-    public class SamplePublisher_Inspector : UnityEditor.Editor
-    {
-        public override void OnInspectorGUI()
+        [UnityEditor.CustomEditor(typeof(SamplePublisher))]
+        public class SamplePublisher_Inspector : UnityEditor.Editor
         {
-            base.OnInspectorGUI();
-
-            SamplePublisher target = (SamplePublisher)base.target;
-
-            GUILayout.Space(20f);
-
-            GUIStyle labelStyle = new GUIStyle()
+            public override void OnInspectorGUI()
             {
-                fontSize = 15,
-                fontStyle = FontStyle.Bold
-            };
+                base.OnInspectorGUI();
 
-            GUILayout.Label("Quick Access", labelStyle);
+                SamplePublisher target = (SamplePublisher)base.target;
 
-            if (GUILayout.Button(nameof(target.TriggerWithoutData)))
-            {
-                target.TriggerWithoutData();
-            }
-            
-            if (GUILayout.Button(nameof(target.TriggerWithoutData1)))
-            {
-                target.TriggerWithoutData1();
-            }
+                GUILayout.Space(20f);
 
-            if (GUILayout.Button(nameof(target.TriggerWithData)))
-            {
-                target.TriggerWithData();
-            }
+                GUIStyle labelStyle = new GUIStyle()
+                {
+                    fontSize = 15,
+                    fontStyle = FontStyle.Bold
+                };
 
-            if (GUILayout.Button(nameof(target.TriggerWithSpecialData)))
-            {
-                target.TriggerWithSpecialData();
+                GUILayout.Label("Quick Access", labelStyle);
+
+                if (GUILayout.Button(nameof(target.TriggerWithoutData)))
+                {
+                    target.TriggerWithoutData();
+                }
+
+                if (GUILayout.Button(nameof(target.TriggerWithoutData1)))
+                {
+                    target.TriggerWithoutData1();
+                }
+
+                if (GUILayout.Button(nameof(target.TriggerWithData)))
+                {
+                    target.TriggerWithData();
+                }
+
+                if (GUILayout.Button(nameof(target.TriggerWithSpecialData)))
+                {
+                    target.TriggerWithSpecialData();
+                }
             }
         }
-    }
 
 #endif
 
-    // -------------------------------------------------------------------------------------------------
+        // -------------------------------------------------------------------------------------------------
 
+    }
 }
